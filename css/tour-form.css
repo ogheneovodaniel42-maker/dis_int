@@ -1,0 +1,66 @@
+/* Schedule a Tour form (popup version) — scoped to .tour-form-wrap */
+.tour-form-wrap{
+  --navy:#0b1e3a;--royal:#1d4ed8;--royal-soft:#3b6fe0;--white:#fff;
+  --gray-50:#f9fbfd;--gray-200:#e6ecf3;--gray-300:#d0dae8;--gray-600:#4a5b73;--gray-700:#2c3a4f;
+  --radius-input:14px;--radius-btn:60px;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--navy);line-height:1.5;
+  position:relative;z-index:2;transition:height .4s ease;
+}
+.tour-form-wrap *,.tour-form-wrap *::before,.tour-form-wrap *::after{box-sizing:border-box}
+.popup-form .tour-form-wrap form.tour-form{display:flex;flex-direction:column;flex-wrap:nowrap;gap:1.75rem}
+.tour-form-wrap fieldset{border:none;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:1.1rem}
+.tour-form-wrap legend{font-size:1.1rem;font-weight:600;color:var(--navy);padding:0 0 .25rem;margin-bottom:.25rem;
+  border-bottom:1px solid var(--gray-200);width:100%;display:flex;align-items:center;gap:.5rem;float:left}
+.tour-form-wrap legend+*{clear:both}
+.tour-form-wrap legend i{color:var(--royal);font-size:1rem}
+.tour-form-wrap .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem 1.25rem}
+.tour-form-wrap .input-field{display:flex;flex-direction:column;gap:.4rem}
+.tour-form-wrap .input-field label{font-size:.9rem;font-weight:500;color:var(--gray-700);display:flex;align-items:center;gap:4px}
+.tour-form-wrap .required{color:#b22234;font-weight:600;margin-left:2px}
+.tour-form-wrap input[type=text],.tour-form-wrap input[type=email],.tour-form-wrap input[type=tel],
+.tour-form-wrap input[type=number],.tour-form-wrap input[type=date],.tour-form-wrap input[type=time],
+.tour-form-wrap select,.tour-form-wrap textarea{
+  font-family:'Inter',sans-serif;width:100%;padding:.85rem 1.1rem;border-radius:var(--radius-input);
+  border:1.5px solid var(--gray-200);background:var(--gray-50);font-size:.95rem;color:var(--navy);
+  transition:all .2s ease;outline:none;appearance:none;-webkit-appearance:none;margin:0;height:auto}
+.tour-form-wrap select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234a5b73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1.1rem center;background-size:1.1rem;padding-right:2.6rem;cursor:pointer}
+.tour-form-wrap input:focus,.tour-form-wrap select:focus,.tour-form-wrap textarea:focus{
+  border-color:var(--royal);background:var(--white);box-shadow:0 0 0 4px rgba(29,78,216,.08)}
+.tour-form-wrap input:hover,.tour-form-wrap select:hover,.tour-form-wrap textarea:hover{border-color:var(--gray-300);background:var(--white)}
+.tour-form-wrap textarea{resize:vertical;min-height:120px;line-height:1.5}
+.tour-form-wrap input:user-invalid,.tour-form-wrap textarea:user-invalid{border-color:#b22234}
+.tour-form-wrap .interest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.75rem 1rem;
+  background:var(--gray-50);padding:1.1rem 1.4rem;border-radius:var(--radius-input);border:1.5px solid var(--gray-200)}
+.tour-form-wrap .interest-item{display:flex;align-items:center;gap:.5rem;font-size:.92rem;color:var(--gray-700);cursor:pointer;margin:0}
+.tour-form-wrap input[type=checkbox]{accent-color:var(--royal);width:1.1rem;height:1.1rem;cursor:pointer;margin:0;flex-shrink:0}
+.tour-form-wrap .consent-box{display:flex;align-items:flex-start;gap:.75rem;background:var(--gray-50);
+  padding:1.1rem 1.4rem;border-radius:var(--radius-input);border:1.5px solid var(--gray-200)}
+.tour-form-wrap .consent-box input[type=checkbox]{width:1.25rem;height:1.25rem;margin-top:.15rem}
+.tour-form-wrap .consent-box label{font-size:.94rem;color:var(--gray-700);cursor:pointer;margin:0}
+.tour-form-wrap .btn-submit{background:var(--royal);color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:600;
+  padding:1rem 2.25rem;border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-btn);cursor:pointer;
+  transition:all .2s ease;box-shadow:0 10px 20px -8px rgba(29,78,216,.35);display:inline-flex;align-items:center;
+  justify-content:center;gap:.65rem;width:100%;max-width:340px}
+.tour-form-wrap .btn-submit:hover{background:#1540b0;transform:translateY(-2px)}
+.tour-form-wrap .btn-submit:hover i{transform:translateX(4px)}
+.tour-form-wrap .btn-submit i{transition:transform .2s ease}
+.tour-form-wrap .form-note{font-size:.82rem;color:var(--gray-600);margin-top:.75rem;display:flex;align-items:center;gap:.4rem;opacity:.85}
+.tour-form-wrap .form-note i{color:var(--royal);font-size:.8rem}
+.tour-form-wrap :focus-visible{outline:2px solid var(--royal);outline-offset:2px}
+/* success state (uses the site's existing thank-you message) */
+[data-popup-target].sent .tour-form-wrap{height:0;opacity:0;pointer-events:none;visibility:hidden;overflow:hidden}
+@media (max-width:700px){
+  .tour-form-wrap .form-row{grid-template-columns:1fr}
+  .tour-form-wrap .interest-grid{grid-template-columns:1fr 1fr}
+  .tour-form-wrap .btn-submit{max-width:100%}
+}
+@media (max-width:450px){.tour-form-wrap .interest-grid{grid-template-columns:1fr}}
+
+/* Popup fixes: site CSS used invalid "pointer-events: visible", so the open popup was unclickable */
+.popup-form.open,
+.popup-form.open [data-popup-wrapper],
+.popup-form.open [data-popup-target]{pointer-events:auto}
+.popup-form.open [data-popup-target]>div{max-height:92vh}
+html.tour-popup-open,html.tour-popup-open body{overflow:hidden}
